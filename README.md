@@ -1,1 +1,3 @@
 # demo
+cd demo
+code .
