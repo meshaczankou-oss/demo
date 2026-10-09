@@ -1,73 +1,396 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Méshac-Aquilas ZANKOU | Développeur Full-Stack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0d1b2a;
+            --navy-mid: #162032;
+            --gold: #c9a84c;
+            --gold-light: #e5c97e;
+            --gold-pale: #f5ecd7;
+            --cream: #faf6ef;
+            --text: #1a1a1a;
+            --text-muted: #5a5a5a;
+            --white: #ffffff;
+            --radius: 4px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+            padding-top: 100px;
+        }
+
+        /* ── NAVBAR ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 6%;
+            background: var(--navy);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .logo-top {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.05em;
+        }
+
+        .logo-top em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .logo-bottom {
+            font-size: 9px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        nav a {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            border-radius: 2px;
+            color: var(--gold) !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold) !important;
+            color: var(--navy) !important;
+        }
+
+        /* ── HERO SECTION ── */
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+            color: var(--white);
+            padding: 0 6%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .hero-eyebrow span {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero-eyebrow p {
+            font-size: 11px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 36px;
+            max-width: 600px;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            padding: 14px 36px;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* ── SECTIONS COMMUNES ── */
+        section {
+            padding: 100px 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin-top: 12px;
+        }
+
+        /* ── GRILLES & CARTES ── */
+        .grid-cards {
+            display: grid;
+            grid-template-cols: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid rgba(13, 27, 42, 0.06);
+            padding: 40px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(13, 27, 42, 0.05);
+            border-color: var(--gold);
+        }
+
+        .card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* ── FORMULAIRE ── */
+        form {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 16px;
+            background: var(--white);
+            border: 1px solid rgba(13, 27, 42, 0.15);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--navy);
+            box-shadow: 0 0 0 3px rgba(13, 27, 42, 0.05);
+        }
+
+        form button {
+            align-self: flex-start;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--navy);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 40px 6%;
+            text-align: center;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+        }
+    </style>
 </head>
+
 <body>
 
-    <!-- 1. BARRE DE NAVIGATION (Navbar) -->
+    <!-- 1. BARRE DE NAVIGATION -->
     <header>
+        <a href="#" class="logo">
+            <span class="logo-top">MQ<em>.</em>ZANKOU</span>
+            <span class="logo-bottom">Développeur Full-Stack</span>
+        </a>
         <nav>
-            <a href="#">MonPortfolio</a>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#competences">Compétences</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#accueil">Accueil</a>
+            <a href="#competences">Compétences</a>
+            <a href="#projets">Projets</a>
+            <a href="#contact" class="nav-cta">Contact</a>
         </nav>
     </header>
 
-    <main>
-        <!-- 2. SECTION ACCUEIL (Hero) -->
-        <section id="accueil">
-            <h1>Créer des applications web modernes et performantes</h1>
-            <p>Bonjour, je suis <strong>Méshac-Aquilas ZANKOU</strong>. Développeur passionné par le code propre, l'UI/UX et la gestion des bases de données.</p>
-            <a href="#projets">Voir mes réalisations</a>
-        </section>
+    <!-- 2. SECTION ACCUEIL -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span></span>
+                <p>Disponible pour vos projets</p>
+            </div>
+            <h1>Créer des applications web <br><span>modernes & performantes</span></h1>
+            <p>Bonjour, je suis Méshac-Aquilas ZANKOU. Développeur de solutions sur mesure, spécialisé dans l'ingénierie
+                logicielle, les architectures de bases de données et la réalisation d'interfaces d'exception.</p>
+            <a href="#projets" class="btn-gold">Découvrir mes réalisations</a>
+        </div>
+    </section>
 
+    <main>
         <!-- 3. SECTION COMPÉTENCES -->
         <section id="competences">
-            <h2>Mes Compétences</h2>
-            <ul>
-                <li>Frontend : HTML5, CSS3, JavaScript, Tailwind CSS</li>
-                <li>Backend & Database : PHP, MySQL, Conception MCD/MLD</li>
-                <li>Outils : Git, GitHub, XAMPP</li>
-            </ul>
-        </section>
+            <h2 class="section-title">Mes Domaines d'Expertise</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3>Frontend Engineering</h3>
+                    <p>Développement d'interfaces responsives, sémantiques et interactives avec HTML5, CSS3, JavaScript
+                        et l'intégration avancée de Tailwind CSS.</p>
+                </div>
+                <div class="card">
+                    <h3>Backend Architecture</h3>
+                    <section id="projets">
+                        <h2>Mes Projets</h2>
+                        <article>
+                            <h3>JP Chawarma</h3>
+                            <p>Développement d'un site web dynamique de restauration doté d'un système de panier
+                                interactif en JavaScript et d'une gestion backend.</p>
+                        </article>
+                        <article>
+                            <h3>FZ Global Business & Communication</h3>
+                            <p>Gestion et déploiement d'actifs digitaux, d'intégrations web et de documentations
+                                techniques.</p>
+                        </article>
+                    </section>
 
-        <!-- 4. SECTION PROJETS -->
-        <section id="projets">
-            <h2>Mes Projets</h2>
-            <article>
-                <h3>JP Chawarma</h3>
-                <p>Développement d'un site web dynamique de restauration doté d'un système de panier interactif en JavaScript et d'une gestion backend.</p>
-            </article>
-            <article>
-                <h3>FZ Global Business & Communication</h3>
-                <p>Gestion et déploiement d'actifs digitaux, d'intégrations web et de documentations techniques.</p>
-            </article>
-        </section>
-
-        <!-- 5. SECTION CONTACT -->
-        <section id="contact">
-            <h2>Me Contacter</h2>
-            <p>Une idée de projet ou une collaboration ? N'hésitez pas à m'envoyer un message.</p>
-            <form>
-                <input type="text" placeholder="Votre Nom" required>
-                <input type="email" placeholder="Votre Email" required>
-                <textarea placeholder="Votre Message" required></textarea>
-                <button type="submit">Envoyer</button>
-            </form>
-        </section>
+                    <!-- 5. SECTION CONTACT -->
+                    <section id="contact">
+                        <h2>Me Contacter</h2>
+                        <p>Une idée de projet ou une collaboration ? N'hésitez pas à m'envoyer un message.</p>
+                        <form>
+                            <input type="text" placeholder="Votre Nom" required>
+                            <input type="email" placeholder="Votre Email" required>
+                            <textarea placeholder="Votre Message" required></textarea>
+                            <button type="submit">Envoyer</button>
+                        </form>
+                    </section>
     </main>
 
     <!-- 6. PIED DE PAGE (Footer) -->
     <footer>
         <p>&copy; 2026 Méshac-Aquilas ZANKOU. Tous droits réservés.</p>
     </footer>
-
-</body>
-</html>
