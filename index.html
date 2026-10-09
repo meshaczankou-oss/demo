@@ -3,10 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio | Développeur</title>
+    <title>Méshac-Aquilas ZANKOU | Développeur Full-Stack</title>
 </head>
 <body>
-    <h1>Bienvenue sur mon Portfolio</h1>
-    <p>Je suis Méshac-Aquilas ZANKOU, développeur.</p>
+
+    <!-- 1. BARRE DE NAVIGATION (Navbar) -->
+    <header>
+        <nav>
+            <a href="#">MonPortfolio</a>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 2. SECTION ACCUEIL (Hero) -->
+        <section id="accueil">
+            <h1>Créer des applications web modernes et performantes</h1>
+            <p>Bonjour, je suis <strong>Méshac-Aquilas ZANKOU</strong>. Développeur passionné par le code propre, l'UI/UX et la gestion des bases de données.</p>
+            <a href="#projets">Voir mes réalisations</a>
+        </section>
+
+        <!-- 3. SECTION COMPÉTENCES -->
+        <section id="competences">
+            <h2>Mes Compétences</h2>
+            <ul>
+                <li>Frontend : HTML5, CSS3, JavaScript, Tailwind CSS</li>
+                <li>Backend & Database : PHP, MySQL, Conception MCD/MLD</li>
+                <li>Outils : Git, GitHub, XAMPP</li>
+            </ul>
+        </section>
+
+        <!-- 4. SECTION PROJETS -->
+        <section id="projets">
+            <h2>Mes Projets</h2>
+            <article>
+                <h3>JP Chawarma</h3>
+                <p>Développement d'un site web dynamique de restauration doté d'un système de panier interactif en JavaScript et d'une gestion backend.</p>
+            </article>
+            <article>
+                <h3>FZ Global Business & Communication</h3>
+                <p>Gestion et déploiement d'actifs digitaux, d'intégrations web et de documentations techniques.</p>
+            </article>
+        </section>
+
+        <!-- 5. SECTION CONTACT -->
+        <section id="contact">
+            <h2>Me Contacter</h2>
+            <p>Une idée de projet ou une collaboration ? N'hésitez pas à m'envoyer un message.</p>
+            <form>
+                <input type="text" placeholder="Votre Nom" required>
+                <input type="email" placeholder="Votre Email" required>
+                <textarea placeholder="Votre Message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- 6. PIED DE PAGE (Footer) -->
+    <footer>
+        <p>&copy; 2026 Méshac-Aquilas ZANKOU. Tous droits réservés.</p>
+    </footer>
+
 </body>
 </html>
